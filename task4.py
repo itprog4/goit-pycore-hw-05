@@ -58,6 +58,7 @@ def show_all(args: list[str], contacts: dict[str, str]) -> str:
     return '\n'.join(f'{name}: {phone}' for name, phone in contacts.items())
 
 
+@input_error
 def hello(args: list[str], contacts: dict[str, str]) -> str:
     return 'How can I help you?'
 
@@ -77,7 +78,7 @@ def main() -> None:
     while True:
         try:
             user_input = input('Enter a command: ')
-        except SystemExit, KeyboardInterrupt, EOFError:
+        except (SystemExit, KeyboardInterrupt, EOFError):
             print('\nGood bye!')
             break
 
